@@ -1,0 +1,5 @@
+docker/data/
+docker/nginx/conf.d/*
+!docker/nginx/conf.d/.gitkeep
+*.pem
+*.jtl
