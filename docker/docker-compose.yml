@@ -1,0 +1,65 @@
+name: mediaverse
+
+services:
+  jellyfin:
+    # Pin one version and do not change it mid-project (upgrades can migrate the database).
+    # Check the available stable tags on Docker Hub (jellyfin/jellyfin) before you pin.
+    image: jellyfin/jellyfin:10.10.7
+    container_name: mediaverse_core
+    restart: unless-stopped
+    user: "1000:1000"
+    mem_limit: 1200m
+    volumes:
+      - /opt/mediaverse/data/config:/config
+      - /opt/mediaverse/data/cache:/cache
+      - type: bind
+        source: /mnt/s3media
+        target: /media
+        read_only: true
+        bind:
+          propagation: rslave      # container still sees the Rclone mount if it remounts
+    networks:
+      mediaverse_net:
+        ipv4_address: 172.28.0.20
+    healthcheck:
+      test: ["CMD", "curl", "--noproxy", "*", "-fsS", "http://localhost:8096/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: mediaverse_proxy
+    restart: unless-stopped
+    mem_limit: 128m
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - /var/www/certbot:/var/www/certbot:ro
+    networks:
+      mediaverse_net:
+        ipv4_address: 172.28.0.10
+    depends_on:
+      jellyfin:
+        condition: service_healthy
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  mediaverse_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/24
