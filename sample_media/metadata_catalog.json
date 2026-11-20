@@ -1,0 +1,58 @@
+[
+    {
+        "file":  "long1_720p.mp4",
+        "title":  "Big Buck Bunny (first 8 minutes)",
+        "creator":  "Blender Foundation",
+        "source":  "https://peach.blender.org",
+        "license":  "CC-BY 3.0",
+        "duration_sec":  480
+    },
+    {
+        "file":  "long2_720p.mp4",
+        "title":  "Sintel (first 8 minutes)",
+        "creator":  "Blender Foundation",
+        "source":  "https://durian.blender.org",
+        "license":  "CC-BY 3.0",
+        "duration_sec":  480
+    },
+    {
+        "file":  "clip1_720p.mp4",
+        "title":  "Aerial view of city skyline",
+        "creator":  "Pexels contributor",
+        "source":  "https://www.pexels.com/video/15744899/",
+        "license":  "Pexels License",
+        "duration_sec":  14
+    },
+    {
+        "file":  "clip2_720p.mp4",
+        "title":  "Looking up at tree canopy",
+        "creator":  "Pexels contributor",
+        "source":  "https://www.pexels.com/video/13604129/",
+        "license":  "Pexels License",
+        "duration_sec":  14
+    },
+    {
+        "file":  "clip3_720p.mp4",
+        "title":  "Aerial view of town roads and rooftops",
+        "creator":  "Pexels contributor",
+        "source":  "https://www.pexels.com/video/19166351/",
+        "license":  "Pexels License",
+        "duration_sec":  35
+    },
+    {
+        "file":  "clip4_720p.mp4",
+        "title":  "Ocean waves",
+        "creator":  "Pexels contributor",
+        "source":  "https://www.pexels.com/video/5853147/",
+        "license":  "Pexels License",
+        "duration_sec":  12
+    },
+    {
+        "file":  "clip5_720p.mp4",
+        "title":  "Appetizer spread on an outdoor table",
+        "creator":  "Pexels contributor",
+        "source":  "https://www.pexels.com/video/6760585/",
+        "license":  "Pexels License",
+        "duration_sec":  14
+    }
+]
