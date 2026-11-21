@@ -9,6 +9,8 @@ services:
     restart: unless-stopped
     user: "1000:1000"
     mem_limit: 1200m
+    environment:
+      - JELLYFIN_PublishedServerUrl=https://mediaverse6.my.id
     volumes:
       - /opt/mediaverse/data/config:/config
       - /opt/mediaverse/data/cache:/cache
